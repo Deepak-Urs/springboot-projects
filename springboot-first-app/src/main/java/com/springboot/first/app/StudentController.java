@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -36,4 +37,13 @@ public class StudentController {
 			@PathVariable("lastName") String lastName) {
 		return new Student(firstName, lastName);
 	};
+	
+//	build REST API to handle query parameters
+//	wrt path-variable, we do not see '?' and key-value pairs in them, they are more of direct variables
+//	@RequestParam
+	@GetMapping("/student/query")
+	public Student studentQueryParam(@RequestParam(name = "firstName") String firstName,  @RequestParam(name = "lastName") String lastName) {
+		return new Student(firstName, lastName);
+	}
+	
 }
