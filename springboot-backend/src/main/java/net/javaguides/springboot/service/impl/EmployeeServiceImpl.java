@@ -1,5 +1,7 @@
 package net.javaguides.springboot.service.impl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import net.javaguides.springboot.model.Employee;
@@ -23,5 +25,12 @@ public class EmployeeServiceImpl implements EmployeeService{
 		// TODO Auto-generated method stub
 		return employeeRepository.save(employee);
 	}
+
+	@Override
+	public List<Employee> getAllEmployees() {
+		// TODO Auto-generated method stub
+		return employeeRepository.findAll();
+	}
+	
 	
 }

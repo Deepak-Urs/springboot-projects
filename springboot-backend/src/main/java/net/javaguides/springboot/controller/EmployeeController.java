@@ -1,10 +1,10 @@
 package net.javaguides.springboot.controller;
 
-//import java.util.List;
+import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-//import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,12 +29,12 @@ public class EmployeeController {
 		return new ResponseEntity<Employee>(employeeService.saveEmployee(employee), HttpStatus.CREATED);
 	}
 	
-////	Build get all employees REST API
-//	@GetMapping()
-//	public List<Employee> getAllEmployees() {
-//		return employeeService.getAllEmployees();	
-//	}
-//	
+//	Build get all employees REST API
+	@GetMapping()
+	public List<Employee> getAllEmployees() {
+		return employeeService.getAllEmployees();	
+	}
+	
 	
 	
 }
