@@ -10,7 +10,7 @@ public class HelloWorldController {
 	
 	@GetMapping("/hello")
 	public String hello(Model model) {
-		model.addAttribute("message", "Hello World! from Thymeleaf-Springboot");
-		return "Hello World! from Thymeleaf-Springboot";
+		model.addAttribute("message", "Hello World");
+		return "helloworld";
 	}
 }
