@@ -1,0 +1,1 @@
+Store all the Thymeleaf templates in this folder
