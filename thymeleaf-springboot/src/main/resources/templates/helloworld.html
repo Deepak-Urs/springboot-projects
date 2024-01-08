@@ -26,6 +26,7 @@
 </body>
 </html> -->
 
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -51,22 +52,18 @@
 					</thead>
 					
 					<tbody>
-						<tr>
-							<td>Deepak </td>
-							<td>Urs</td>
-							<td>gvdeepakurs2202@gmail.com</td>
+						<tr th:each="employee:${employees}">
+							<td th:text="${employee.firstName}"></td>
+							<td th:text="${employee.lastName}"></td>
+							<td th:text="${employee.email}"></td>
 						</tr>
 						
-						<tr>
-							<td>A </td>
-							<td>B</td>
-							<td>c@gmail.com</td>
-						</tr>
-						
-						<tr>
-							<td>D </td>
-							<td>E</td>
-							<td>fghi@gmail.com</td>
+						<tr th:each="employee:${employees}"
+							th:style="${employeeStat.odd}? 'font-weight: bold'"
+							th:alt-title="${employeeStat.even}? 'even' : 'odd'">
+							<td th:text="${employee.firstName}"></td>
+							<td th:text="${employee.lastName}"></td>
+							<td th:text="${employee.email}"></td>
 						</tr>
 					</tbody>
 				</table>

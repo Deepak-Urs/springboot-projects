@@ -29,6 +29,14 @@
 							<td th:text="${employee.lastName}"></td>
 							<td th:text="${employee.email}"></td>
 						</tr>
+						
+						<tr th:each="employee:${employees)"
+							th:style="${employmentStat.odd}? 'font-weight: bold;'"
+							th:alt-title="${employmentStat.even}? 'even' : 'odd'">
+							<td th:text="${employee.firstName}"></td>
+							<td th:text="${employee.lastName}"></td>
+							<td th:text="${employee.email}"></td>
+						</tr>
 					</tbody>
 				</table>
 			</div>
