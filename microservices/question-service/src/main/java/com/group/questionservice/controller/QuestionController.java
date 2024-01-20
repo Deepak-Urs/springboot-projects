@@ -25,17 +25,17 @@ public class QuestionController {
 		this.questionService = questionService;
 	}
 
-	@GetMapping("/allQuestions")
+	@GetMapping("allQuestions")
 	public List<Question> getAllQuestions() {
 		return questionService.getAllQuestions();
 	}
 	
-	@GetMapping("/category/{category}")
+	@GetMapping("category/{category}")
 	public List<Question> getQuestionsByCategory(@PathVariable String category) {
 		return questionService.getQuestionsByCategory(category);
 	}
 	
-	@PostMapping("/add")
+	@PostMapping("add")
 	public String addQuestion(@RequestBody Question question) {
 		return questionService.addQuestion(question);
 	}
