@@ -2,6 +2,8 @@ package com.group.questionservice.service;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.group.questionservice.Question;
@@ -17,20 +19,36 @@ public class QuestionService {
 		this.questionDao = questionDao;
 	}
 
-	public List<Question> getAllQuestions() {
-		// TODO Auto-generated method stub
-		return questionDao.findAll();
+	public ResponseEntity<List<Question>> getAllQuestions() {
+		try {
+			return new ResponseEntity<>(questionDao.findAll(), HttpStatus.OK);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity<>(questionDao.findAll(), HttpStatus.BAD_REQUEST);
+		
 	}
 
-	public List<Question> getQuestionsByCategory(String category) {
+	public ResponseEntity<List<Question>> getQuestionsByCategory(String category) {
 		// TODO Auto-generated method stub
-		return questionDao.findByCategory(category);
+		try {
+			return new ResponseEntity<>(questionDao.findByCategory(category), HttpStatus.OK);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity<>(questionDao.findByCategory(category), HttpStatus.BAD_REQUEST);
 	}
 
-	public String addQuestion(Question question) {
+	public ResponseEntity<String> addQuestion(Question question) {
 		// TODO Auto-generated method stub
+		try {
+			questionDao.save(question);
+			return new ResponseEntity<>("success", HttpStatus.CREATED);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 		questionDao.save(question);
-		return "Success";
+		return new ResponseEntity<>("success", HttpStatus.BAD_REQUEST);
 	}
 	
 }
