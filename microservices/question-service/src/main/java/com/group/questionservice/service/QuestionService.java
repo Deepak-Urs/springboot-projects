@@ -6,8 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.group.questionservice.Question;
 import com.group.questionservice.dao.QuestionDao;
+import com.group.questionservice.model.Question;
 
 @Service
 public class QuestionService {
