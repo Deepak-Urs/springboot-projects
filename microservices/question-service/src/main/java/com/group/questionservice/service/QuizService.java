@@ -14,6 +14,7 @@ import com.group.questionservice.dao.QuizDao;
 import com.group.questionservice.model.Question;
 import com.group.questionservice.model.QuestionWrapper;
 import com.group.questionservice.model.Quiz;
+import com.group.questionservice.model.Response;
 
 @Service
 public class QuizService {
@@ -50,5 +51,22 @@ public class QuizService {
 		return new ResponseEntity<>(questionsForUser, HttpStatus.OK);
 		
 	}
-	
+
+	public ResponseEntity<Integer> calculateResult(Integer id, List<Response> responses) {
+		Quiz quiz = quizDao.findById(id).get();
+		List<Question> questions = quiz.getQuestions();
+		
+		int correct = 0;
+		int i = 0;
+				
+		for(Response response: responses) {
+			if(response.getAnswer().equals(questions.get(i).getAnswer())) {
+					correct += 1;
+			}
+			i += 1;
+		}
+		
+		return new ResponseEntity<>(correct, HttpStatus.OK);
+		
+	}
 }
