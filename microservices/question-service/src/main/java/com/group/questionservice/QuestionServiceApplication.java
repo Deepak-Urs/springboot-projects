@@ -3,7 +3,7 @@ package com.group.questionservice;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication()
 public class QuestionServiceApplication {
 
 	public static void main(String[] args) {
