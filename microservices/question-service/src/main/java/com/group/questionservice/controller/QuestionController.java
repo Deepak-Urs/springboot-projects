@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.group.questionservice.model.Question;
+import com.group.questionservice.model.QuestionWrapper;
 import com.group.questionservice.service.QuestionService;
 
 @RestController
@@ -47,6 +48,12 @@ public class QuestionController {
 	public ResponseEntity<List<Integer>> generateQuestionsForQuiz(@RequestParam String caregoryName, @RequestParam Integer numQuestions) {
 		return questionService.generateQuestionsForQuiz(caregoryName, numQuestions);
 	}
+	
 //	getQuestions(questionid)
+	@PostMapping("getQuestions")
+	public ResponseEntity<List<QuestionWrapper>> getQuestionsFromId(@RequestBody List<Integer> questionIds) {
+		return questionService.getQuestionsFromId(questionIds);
+	
+	}
 //	getScore
 }
