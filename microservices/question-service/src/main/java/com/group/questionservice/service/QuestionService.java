@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.group.questionservice.dao.QuestionDao;
 import com.group.questionservice.model.Question;
 import com.group.questionservice.model.QuestionWrapper;
+import com.group.questionservice.model.Response;
 
 @Service
 public class QuestionService {
@@ -78,6 +79,21 @@ public class QuestionService {
 		}
 		
 		return new ResponseEntity<>(wrappers, HttpStatus.OK);
+	}
+
+	public ResponseEntity<Integer> getScore(List<Response> responses) {
+		int right = 0;
+		
+		for (Response response: responses) {
+			Question qn = questionDao.findById(response.getId()).get();
+			if(response.getAnswer().equals(qn.getAnswer())) {
+				right += 1;
+			}
+					
+		}
+		return new ResponseEntity<>(right, HttpStatus.OK);
+				
+		
 	}
 	
 }
