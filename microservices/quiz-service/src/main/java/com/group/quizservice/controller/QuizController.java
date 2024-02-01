@@ -25,19 +25,19 @@ public class QuizController {
 	QuizService quizService;
 	
 	@PostMapping("create")
-	public ResponseEntity<String> createQuiz(@RequestBody QuizDto quizDto) {
+	public ResponseEntity<List<Integer>> createQuiz(@RequestBody QuizDto quizDto) {
 		return quizService.createQuiz(quizDto.getCategoryName(), quizDto.getNumQuestions(), quizDto.getTitle());
 	}
 	
-	@GetMapping("get/{id}")
-	public ResponseEntity<List<QuestionWrapper>> getQuizQuestions(@PathVariable Integer id) {
-//		wrapper for getting all data without answers	
-		return quizService.getQuizQuestions(id);
-	}
-	
-	@PostMapping("submit/{id}")
-	public ResponseEntity<Integer> submitQuiz(@PathVariable Integer id, @RequestBody List<Response> responses) {
-		return quizService.calculateResult(id, responses);
-	}
+//	@GetMapping("get/{id}")
+//	public ResponseEntity<List<QuestionWrapper>> getQuizQuestions(@PathVariable Integer id) {
+////		wrapper for getting all data without answers	
+//		return quizService.getQuizQuestions(id);
+//	}
+//	
+//	@PostMapping("submit/{id}")
+//	public ResponseEntity<Integer> submitQuiz(@PathVariable Integer id, @RequestBody List<Response> responses) {
+//		return quizService.calculateResult(id, responses);
+//	}
 	
 }
