@@ -20,6 +20,6 @@ public class Quiz {
 	private String title;
 	
 	@ElementCollection
-	private List<Integer> questions;
+	private List<Integer> questionIds;
 
 }

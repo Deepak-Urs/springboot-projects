@@ -26,7 +26,7 @@ public class QuizService {
 		List<Integer> questions = quizInterface.getQuestionsForQuiz(categoryName, numQuestions).getBody();
 		Quiz quiz = new Quiz();
 		quiz.setTitle(title);
-		quiz.setQuestions(questions); // questionIds
+		quiz.setQuestionIds(questions); // questionIds
 		quizDao.save(quiz);
 		
 		return new ResponseEntity<List<Integer>>(HttpStatus.CREATED);
