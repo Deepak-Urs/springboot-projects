@@ -40,8 +40,8 @@ public class QuizService {
 		return questions;
 	}
 
-	public ResponseEntity<Integer> calculateResult(List<Response> responses) {
-		// TODO Auto-generated method stub
-		return null;
+	public ResponseEntity<Integer> calculateResult(Integer id, List<Response> responses) {
+		ResponseEntity<Integer> score = quizInterface.getScore(responses);
+		return score;
 	}
 }
