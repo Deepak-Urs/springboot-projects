@@ -10,11 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.group.quizservice.model.QuestionWrapper;
-import com.group.quizservice.model.Response;
 import com.group.quizservice.service.QuizService;
 
 @RestController
@@ -29,11 +27,11 @@ public class QuizController {
 		return quizService.createQuiz(quizDto.getCategoryName(), quizDto.getNumQuestions(), quizDto.getTitle());
 	}
 	
-//	@GetMapping("get/{id}")
-//	public ResponseEntity<List<QuestionWrapper>> getQuizQuestions(@PathVariable Integer id) {
-////		wrapper for getting all data without answers	
-//		return quizService.getQuizQuestions(id);
-//	}
+	@GetMapping("get/{id}")
+	public ResponseEntity<List<QuestionWrapper>> getQuizQuestions(@PathVariable Integer id) {
+//		wrapper for getting all data without answers	
+		return quizService.getQuizQuestions(id);
+	}
 //	
 //	@PostMapping("submit/{id}")
 //	public ResponseEntity<Integer> submitQuiz(@PathVariable Integer id, @RequestBody List<Response> responses) {

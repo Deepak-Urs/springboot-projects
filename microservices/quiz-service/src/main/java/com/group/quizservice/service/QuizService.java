@@ -32,12 +32,15 @@ public class QuizService {
 		return new ResponseEntity<List<Integer>>(HttpStatus.CREATED);
 	}
 
-	public ResponseEntity<List<QuestionWrapper>> getQuestionsFromId(List<Integer> questionIds) {
-		// TODO Auto-generated method stub
-		return null;
+	public ResponseEntity<List<QuestionWrapper>> getQuizQuestions(Integer id) {
+		Quiz quiz = quizDao.findById(id).get();
+		List<Integer> questionIds = quiz.getQuestionIds();
+		ResponseEntity<List<QuestionWrapper>> questions = quizInterface.getQuestionsFromId(questionIds);
+		
+		return questions;
 	}
 
-	public ResponseEntity<Integer> getScore(List<Response> responses) {
+	public ResponseEntity<Integer> calculateResult(List<Response> responses) {
 		// TODO Auto-generated method stub
 		return null;
 	}
