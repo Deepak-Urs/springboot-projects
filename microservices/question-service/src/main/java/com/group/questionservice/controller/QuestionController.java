@@ -3,6 +3,7 @@ package com.group.questionservice.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +24,9 @@ public class QuestionController {
 	
 	@Autowired
 	public QuestionService questionService;
+	
+	@Autowired
+	Environment environment;
 	
 	public QuestionController(QuestionService questionService) {
 		super();
@@ -53,6 +57,7 @@ public class QuestionController {
 //	getQuestions(questionid)
 	@PostMapping("getQuestions")
 	public ResponseEntity<List<QuestionWrapper>> getQuestionsFromId(@RequestBody List<Integer> questionIds) {
+		System.out.println(environment.getProperty("local.server.port"));
 		return questionService.getQuestionsFromId(questionIds);
 	
 	}
