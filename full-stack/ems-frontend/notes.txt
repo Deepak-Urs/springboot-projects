@@ -1,0 +1,14 @@
+1. pkg.json: basic info
+2. vite.config.js: basic info wrt vitejs tool
+3. index.js is the entry point of the project
+4. node-modules: general info
+5. public folder used for static files of project
+6. src/main.jsx -> entry point of JS app
+7. index.css -> base css file for the project
+8. app.js -> base component/root component
+9. app.css -> base css file for the app
+10. assets folder -> used for static files of the app
+
+Flow of app -
+1. First index.html runs and next main.jsx and it calls root element's render() which renders the APP components
+2. Install React-DevTools chrome extension and its usage
