@@ -12,3 +12,8 @@
 Flow of app -
 1. First index.html runs and next main.jsx and it calls root element's render() which renders the APP components
 2. Install React-DevTools chrome extension and its usage
+
+
+Adding Bootstarp in React App
+1. @ems-frontend, >> npm i bootstrap --save
+2. @main.jsx, import 'bootstrap/dist/css/bootstrap.min.css'
