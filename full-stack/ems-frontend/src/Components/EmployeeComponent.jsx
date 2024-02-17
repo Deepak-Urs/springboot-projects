@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { createEmployee, getEmployee } from "../services/EmployeeService"
+import { createEmployee, getEmployee, updateEmployee } from "../services/EmployeeService"
 import { useNavigate, useParams } from "react-router-dom"
 
 const EmployeeComponent = () => {
@@ -7,6 +7,7 @@ const EmployeeComponent = () => {
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
   const [errors, setErrors] = useState({firstName: '', lastName:'', email:''});
+  const [isUpdateOperation, setIsUpdateOperation] = useState(false)
 
 
   const navigator = useNavigate();
@@ -19,6 +20,7 @@ const EmployeeComponent = () => {
         setFirstName(res.data.firstName)
         setLastName(res.data.lastName)
         setEmail(res.data.email)
+        setIsUpdateOperation(!isUpdateOperation)
       }).catch(err => console.log(err));
     }
     
@@ -39,12 +41,23 @@ const EmployeeComponent = () => {
     console.log(employee);
 
     if(validateForm()) {
-      createEmployee(employee).then(res => {
-        console.log(res.data);
-        navigator('/employees')
-      }).catch(err => {
-        console.log(err);
-      })
+      if(!isUpdateOperation) {
+        createEmployee(employee).then(res => {
+          console.log(res.data);
+          navigator('/employees')
+        }).catch(err => {
+          console.log(err);
+        })
+      }
+      else {
+        updateEmployee(id, employee).then(res => {
+          console.log(res);
+          navigator('/employees');
+          setIsUpdateOperation(!isUpdateOperation)
+        }).catch(err => {
+          console.log(err);
+        })
+      }
     }
     //else {
 
