@@ -59,10 +59,6 @@ const EmployeeComponent = () => {
         })
       }
     }
-    //else {
-
-    //}
-    
   }
 
   const validateForm = () => {

@@ -7,3 +7,9 @@
     text-align: center;
     color: white;
 }
+
+.action-cell {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}

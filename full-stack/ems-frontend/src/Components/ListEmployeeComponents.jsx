@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { listEmployees } from "../services/EmployeeService"
+import { listEmployees, deleteEmployee } from "../services/EmployeeService"
 import { useNavigate } from "react-router-dom"
 
 const ListEmployeeComponents = () => {
@@ -23,6 +23,14 @@ const ListEmployeeComponents = () => {
         navigator(`/edit-employee/${id}`)
     }
 
+    const deletingEmployee = (id) => {
+        deleteEmployee(id).then(res => {
+            console.log('EmployeeID-'+id+' details deleted successfully');
+            console.log(res);
+            location.reload()
+        }).catch(err => console.log(err));
+    }
+
     
   return (
     <div className="container">
@@ -44,8 +52,10 @@ const ListEmployeeComponents = () => {
                     <td>{emp.firstName}</td>
                     <td>{emp.lastName}</td>
                     <td>{emp.email}</td>
-                    <td>
-                        <button className="btn btn-info" onClick={() => updateEmployee(emp.id)}>Update</button></td>
+                    <td className="action-cell">
+                        <button className="btn btn-info" onClick={() => updateEmployee(emp.id)}> ✏️ </button>
+                        <button className="btn btn-warning" onClick={() => deletingEmployee(emp.id)}>❌</button>
+                    </td>
                     </tr>
                 )
             }
