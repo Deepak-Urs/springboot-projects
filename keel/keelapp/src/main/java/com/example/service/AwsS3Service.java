@@ -1,9 +1,10 @@
 package com.example.service;
 
+import javax.swing.plaf.synth.Region;
+
 import jakarta.inject.Singleton;
 import software.amazon.awssdk.auth.credentials.DefaultCredentialsProvider;
 import software.amazon.awssdk.core.sync.RequestBody;
-import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.s3.*;
 import software.amazon.awssdk.services.s3.model.*;
 
@@ -11,7 +12,8 @@ import software.amazon.awssdk.services.s3.model.*;
 public class AwsS3Service {
 
     private final S3Client s3Client;
-    private final String bucketName = "your-s3-bucket-name"; // ← replace this
+    private final String bucketName = "keel-java-stock-purchase-prod-us-east-1";
+
 
     public AwsS3Service() {
         this.s3Client = S3Client.builder()
